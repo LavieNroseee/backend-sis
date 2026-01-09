@@ -26,6 +26,16 @@ app.use(session({
   }
 }));
 
+
+app.get('/', (req, res) => {
+  res.send('OK - backend-sis funcionando');
+});
+
+app.get('/health', (req, res) => {
+  res.json({ ok: true, service: 'backend-sis', time: new Date().toISOString() });
+});
+
+
 // LOGIN FAKE
 app.post('/login', (req, res) => {
   req.session.user = { id: 1, nombre: 'Admin Test' };
